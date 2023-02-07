@@ -16,21 +16,22 @@ public class SLAM1_TPpre1_preProRPjet {
         Personnage joueur = f.introduction();
         String affMenu = "-----------------------------------------------------\n"
                 + "Que voulez-vous faire ?\n"
+                + "1 - Gestions des statistiques.\n"
+                + "2 - Gestions des sorts.\n"
+                + "3 - Recommencer.\n"
+                + "4 - Quitter le menu statistiques/sorts.\n"
+                + "-----------------------------------------------------";
+        String affMenuStats = "-----------------------------------------------------\n"
                 + "1 - Afficher les statistiques.\n"
                 + "2 - Modifier les statistiques.\n"
                 + "3 - Remettre les statistiques à zéro.\n"
-                + "4 - Afficher les sorts.\n"
-                + "5 - Afficher les sorts en combat.\n"
-                + "6 - Recommencer.\n"
-                + "7 - Quitter le menu statistiques/sorts.\n"
+                + "4 - (retour)\n"
                 + "-----------------------------------------------------";
-        String affMenuStats = "1 - Afficher les statistiques.\n"
-                + "2 - Modifier les statistiques.\n"
-                + "3 - Remettre les statistiques à zéro.\n"
-                + "4 - (retour)";
-        String affMenuSorts = "1 - Afficher les sorts.\n"
+        String affMenuSorts = "-----------------------------------------------------\n" 
+                + "1 - Afficher les sorts.\n"
                 + "2 - Afficher les sorts en combat.\n"
-                + "3 - (retour)";
+                + "3 - (retour)\n"
+                + "-----------------------------------------------------";
         String affStats = "-----------------------------------------------------\n"
                 + "Quelle statistique voulez-vous augmenter ?\n"
                 + "1 - Vitalité\n"
@@ -44,41 +45,47 @@ public class SLAM1_TPpre1_preProRPjet {
                 + "Combien voulez-vous investir (1 - ";
 
         int choixMenu;
+        int choixSousMenu;
         int choixMontant;
         do
         {
-            choixMenu = f.repet(7, affMenu);
+            choixMenu = f.repet(4, affMenu);
             if(choixMenu == 1)
-                joueur.affStats();            
+            {
+                choixSousMenu = f.repet(4, affMenuStats);
+                if(choixSousMenu == 1)
+                    joueur.affStats();            
+                if(choixSousMenu == 2)
+                {
+                    if(joueur.getPointDeCompetence() > 0)
+                    {
+                        System.out.println("Vous avez " + joueur.getPointDeCompetence() + " point(s) restant(s).");
+                        choixMontant = f.repet(joueur.getPointDeCompetence(),
+                                affPoint + joueur.getPointDeCompetence() + ") ?");
+                        joueur.augmenterStats(choixMontant, f.repet(6,affStats));
+                    }
+                    else
+                    {
+                        System.out.println("Vous n'avez plus de point !");
+                    }
+                }
+                if(choixSousMenu == 3)
+                    joueur.remettreZeroStats();
+            }
             if(choixMenu == 2)
             {
-                if(joueur.getPointDeCompetence() > 0)
-                {
-                    System.out.println("Vous avez " + joueur.getPointDeCompetence() + " point(s) restant(s).");
-                    choixMontant = f.repet(joueur.getPointDeCompetence(),
-                            affPoint + joueur.getPointDeCompetence() + ") ?");
-                    joueur.augmenterStats(choixMontant, f.repet(6,affStats));
-                }
-                else
-                {
-                    System.out.println("Vous n'avez plus de point !");
-                }
+                choixSousMenu = f.repet(3, affMenuSorts);
+                if(choixSousMenu == 1)
+                    joueur.affSorts();
+                if(choixSousMenu == 2)
+                    joueur.affSortsCombat(); 
             }
             if(choixMenu == 3)
-                joueur.remettreZeroStats();
-            if(choixMenu == 4)
-                joueur.affSorts();
-            if(choixMenu == 5)
-                joueur.affSortsCombat(); 
-            
-            if(choixMenu == 6)
             {
                 main(s);  
                 break;
-            }
-            if(choixMenu == 7)
-                System.out.println("Vous quittez Dofus.");
-             
-        } while(choixMenu != 7);
+            }    
+        } while(choixMenu != 4);
+        System.out.println("Vous quittez Dofus.");
     }
 }
