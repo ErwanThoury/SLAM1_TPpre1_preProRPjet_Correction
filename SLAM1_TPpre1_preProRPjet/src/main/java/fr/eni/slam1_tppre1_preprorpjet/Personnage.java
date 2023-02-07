@@ -96,4 +96,144 @@ public class Personnage {
         System.out.println("Sort 3");
         this.sortTrois.affSort();
     }
+    
+    public void affSortsCombat()
+    {
+        System.out.println("-----------------------------------------------------");
+        this.sortUn.affDegatSort(this.intelligence, this.force, this.chance, this.agilite);
+        System.out.println("-----------------------------------------------------");
+        this.sortDeux.affDegatSort(this.intelligence, this.force, this.chance, this.agilite);
+        System.out.println("-----------------------------------------------------");
+        this.sortTrois.affDegatSort(this.intelligence, this.force, this.chance, this.agilite);    
+    }
+    
+    public void augmenterStats(int nbAugmenter, int choixStats)
+    {
+        if(nbAugmenter <= this.pointDeCompetence)
+        {
+            this.pointDeCompetence = this.pointDeCompetence - nbAugmenter;
+            if(choixStats == 1)
+                this.setPv(this.pv + nbAugmenter);
+            if(choixStats == 2)
+                this.setSagesse(this.sagesse + nbAugmenter);
+            if(choixStats == 3)
+                this.setIntelligence(this.intelligence + nbAugmenter);
+            if(choixStats == 4)
+                this.setForce(this.force + nbAugmenter);
+            if(choixStats == 5)
+                this.setChance(this.chance + nbAugmenter);
+            if(choixStats == 6)
+                this.setAgilite(this.agilite + nbAugmenter);
+        }
+        else
+        {
+            System.out.println("Pas assez de point de compétence !");
+        }
+        
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
+    }
+
+    public int getPv() {
+        return pv;
+    }
+
+    public void setPv(int pv) {
+        this.pv = pv;
+    }
+
+    public int getSagesse() {
+        return sagesse;
+    }
+
+    public void setSagesse(int sagesse) {
+        this.sagesse = sagesse;
+    }
+
+    public int getForce() {
+        return force;
+    }
+
+    public void setForce(int force) {
+        this.force = force;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getAgilite() {
+        return agilite;
+    }
+
+    public void setAgilite(int agilite) {
+        this.agilite = agilite;
+    }
+
+    public int getChance() {
+        return chance;
+    }
+
+    public void setChance(int chance) {
+        this.chance = chance;
+    }
+
+    public int getPointDeCompetence() {
+        return pointDeCompetence;
+    }
+
+    public void setPointDeCompetence(int pointDeCompetence) {
+        this.pointDeCompetence = pointDeCompetence;
+    }
+
+    public Sort getSortUn() {
+        return sortUn;
+    }
+
+    public void setSortUn(Sort sortUn) {
+        this.sortUn = sortUn;
+    }
+
+    public Sort getSortDeux() {
+        return sortDeux;
+    }
+
+    public void setSortDeux(Sort sortDeux) {
+        this.sortDeux = sortDeux;
+    }
+
+    public Sort getSortTrois() {
+        return sortTrois;
+    }
+
+    public void setSortTrois(Sort sortTrois) {
+        this.sortTrois = sortTrois;
+    }
+    
 }

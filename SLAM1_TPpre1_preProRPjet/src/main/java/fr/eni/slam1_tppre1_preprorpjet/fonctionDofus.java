@@ -32,16 +32,16 @@ public class fonctionDofus {
         if(choixPerso == 1)
         {
             classe = "Steamer";
-            sortUn = new Sort("Vapor", 1, 20, 22, 4, "feu", 0.25); 
-            sortDeux = new Sort("Ancrage", 1, 14, 16, 6, "terre", 0.05); 
-            sortTrois = new Sort("Torpille", 1, 18, 21, 4, "agilité", 0.15); 
+            sortUn = new Sort("Vapor", 20, 22, 4, "feu", 0.25); 
+            sortDeux = new Sort("Ancrage", 14, 16, 6, "terre", 0.05); 
+            sortTrois = new Sort("Torpille", 18, 21, 4, "agilité", 0.15); 
         }
         else
         {
             classe = "Sadida";
-            sortUn = new Sort("Ronce", 1, 12, 14, 6, "terre", 0.05); 
-            sortDeux = new Sort("Larme", 1, 13, 15, 4, "eau", 0.25); 
-            sortTrois = new Sort("Herbe Folle", 1, 20, 23, 6, "feu", 0.15); 
+            sortUn = new Sort("Ronce", 12, 14, 6, "terre", 0.05); 
+            sortDeux = new Sort("Larme", 13, 15, 4, "eau", 0.25); 
+            sortTrois = new Sort("Herbe Folle", 20, 23, 6, "feu", 0.15); 
         }
         int choixNiveau = repet(200, "Quel niveau as-tu atteint ? (1 - 200)");
         System.out.println("Quel est votre nom disciple " + classe + " ?");
